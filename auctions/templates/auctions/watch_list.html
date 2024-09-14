@@ -13,13 +13,11 @@
                                 <h5 class="card-title">{{ item.title }}</h5>
                                 <p class="card-text">{{ item.description|truncatewords:20 }}</p>
                                 
-                                <!-- View Listing Form -->
                                 <form method="GET" action="{% url 'listing_page' item.id %}">
                                     {% csrf_token %}    
                                     <button type="submit" class="btn btn-primary">View Listing</button>
                                 </form>
 
-                                <!-- Remove from Watchlist Form -->
                                 <form method="POST" action="{% url 'watch_list' %}">
                                     {% csrf_token %}
                                     <input type="hidden" name="to_remove" value="{{ item.id }}">

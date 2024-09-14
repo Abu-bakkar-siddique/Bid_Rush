@@ -1,8 +1,31 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fffbfb85;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-
+main {
+    flex: 1;
+}
+.navbar {
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.nav-link {
+    color: #495057;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+.nav-link:hover {
+    color: #007bff;
+}
+.btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+}
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
 .navbar {
     padding: 10px 20px;
 }
@@ -38,15 +61,13 @@ body {
     
 }
 
-/* Change background color on hover */
 .auction-card:hover {
-    background-color: #f8f9fa; /* Light gray background on hover */
-    transition: background-color 0.3s ease; /* Smooth transition */
+    background-color: #f8f9fa; 
+    transition: background-color 0.3s ease; 
 }
 
-/* Add a subtle shadow to the card on hover */
 .auction-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .error-message {
@@ -54,3 +75,9 @@ body {
     color: rgb(255, 77, 77);
 }
 
+.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.transition {
+    transition: all 0.3s ease-in-out;
+}
