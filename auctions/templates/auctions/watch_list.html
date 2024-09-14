@@ -1,0 +1,39 @@
+{% extends 'auctions/layout.html' %}
+{% block body %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Your Watchlist</h2>
+        
+        {% if request.session.watchlist %}
+            <div class="row justify-content-center">
+                {% for item in request.session.watchlist %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img src="{{ item.image }}" class="card-img-top" alt="{{ item.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.title }}</h5>
+                                <p class="card-text">{{ item.description|truncatewords:20 }}</p>
+                                
+                                <!-- View Listing Form -->
+                                <form method="GET" action="{% url 'listing_page' item.id %}">
+                                    {% csrf_token %}    
+                                    <button type="submit" class="btn btn-primary">View Listing</button>
+                                </form>
+
+                                <!-- Remove from Watchlist Form -->
+                                <form method="POST" action="{% url 'watch_list' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="to_remove" value="{{ item.id }}">
+                                    <button type="submit" class="btn btn-danger mt-2">Remove from Watchlist</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning text-center">
+                Your watchlist is currently empty.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
