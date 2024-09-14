@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fffbfb85;
+}
+
+.navbar {
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-bar-link {
+    margin: 0 5px;
+    font-weight: 500;
+}
+
+.nav-bar-link:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.forms {
+    text-align: center;
+    width: auto 80%;
+    
+}
+
+/* Change background color on hover */
+.auction-card:hover {
+    background-color: #f8f9fa; /* Light gray background on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Add a subtle shadow to the card on hover */
+.auction-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
+}
+
+.error-message {
+    text-align: center; 
+    color: rgb(255, 77, 77);
+}
+

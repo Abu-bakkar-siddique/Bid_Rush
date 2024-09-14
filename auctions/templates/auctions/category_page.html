@@ -1,0 +1,68 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Auction Listings</h2>
+    
+    <!-- Category Selection Form -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
+            <form method="GET" action="{% url 'category_page' %}" class="bg-light p-4 rounded shadow-sm">
+                <div class="mb-3">
+                    <label for="category" class="form-label">Select Category:</label>
+                    <select id="category" name="category" class="form-select">
+                        <option value="">All Categories</option>
+                        {% for category in all_categories %}
+                            <option value="{{ category }}">{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Filter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Auctions Listing -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% if category_listings %}
+            {% for auction in category_listings %}
+                <div class="col">
+                    <a href="{% url 'listing_page' auction.id %}" class="text-decoration-none">
+                        <div class="card h-100 shadow-sm hover-shadow transition">
+                            <img src="{{ auction.image }}" class="card-img-top" alt="{{ auction.name }}" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">{{ auction.name }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Posted by: {{ auction.user }}</h6>
+                                <p class="card-text">
+                                    <strong>Price:</strong> ${{ auction.price }}<br>
+                                    <strong>Date:</strong> {{ auction.date }}<br>
+                                    <strong>Category:</strong> {{ auction.categery }}
+                                </p>
+                                <p class="card-text text-truncate">{{ auction.description }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-top-0">
+                                <button class="btn btn-outline-primary btn-sm w-100">View Details</button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-info text-center" role="alert">
+                    No auctions found in this category.
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .hover-shadow:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+    .transition {
+        transition: all 0.3s ease-in-out;
+    }
+</style>
+{% endblock %}

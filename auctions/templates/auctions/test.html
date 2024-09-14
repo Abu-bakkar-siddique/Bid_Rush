@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+
+            body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.navbar {
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-bar-link {
+    margin: 0 5px;
+    font-weight: 500;
+}
+
+.nav-bar-link:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.main-content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+        </style>
+        <title>{% block title %}Auctions{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">  -->
+
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to right, #f8f9fa, #e9ecef); box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+            <a class="navbar-brand" href="#">Auctions</a>
+
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link nav-bar-link active" href=" {% url 'index' %} "> Active Listings</a>
+                <a class="nav-item nav-link nav-bar-link" href=" {% url 'index' %} ">Categories</a>
+                <a class="nav-item nav-link nav-bar-link" href="#" >Watchlist</a>
+                <a class="nav-item nav-link nav-bar-link" href="#" >Create Listing</a>
+            </div>
+
+            <div class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <div class="d-flex align-items-center">
+                    <a class="nav-item nav-link nav-bar-link" href="{% url 'logout' %}" style="font-weight: 500; color: #007bff; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s ease-in-out;">
+                        Log Out
+                    </a>  
+                    <span class="navbar-text" style="font-weight: 600; color: #06a12a; margin-left: 15px;">
+                        Logged in as <strong>{{ user.username }}</strong>
+                    </span>
+                </div>
+
+                {% else %}
+                <a class="nav-item nav-link  nav-bar-link" href="{% url 'login' %}" style="font-weight: 500; color: #007bff; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s ease-in-out;">
+                    Sign in
+                </a>
+                <a class="nav-item nav-link nav-bar-link" href="{% url 'register' %}" style="font-weight: 500; color: #007bff; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s ease-in-out;">
+                    Register
+                </a>
+                {% endif %}
+            </div>
+        </nav>
+        
+          {% block body %}
+        {% endblock %}
+    </body>
+</html>
