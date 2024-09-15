@@ -5,7 +5,7 @@ class User(AbstractUser):
     pass
 
 class Category (models.Model):
-    name = models.CharField(max_length=24)
+    name = models.CharField(max_length=24)   
     def __str__(self):
         return self.name 
 
@@ -18,6 +18,7 @@ class AuctionListing (models.Model):
     categery = models.ForeignKey(Category, on_delete= models.CASCADE, related_name = "category_listing")
     description = models.TextField(max_length = 1000)
     is_active = is_active = models.BooleanField(default=True)
+    
     def __str__(self):
         return self.name 
 

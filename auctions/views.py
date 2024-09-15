@@ -102,7 +102,7 @@ class CreateListing(forms.Form):
     description = forms.CharField(widget = forms.Textarea(attrs= {'width' : '80%','text-aligh' : 'center', 'placeholder': 'Description'} ))
     starting_bid = forms.IntegerField(widget=forms.NumberInput(attrs= { 'placeholder' : 'Starting bid' }))    
 
-@login_required
+@login_required(login_url = '/login') 
 def create_listing(request):
     if request.method == 'GET':
 
@@ -261,10 +261,8 @@ def listing_page(request, item_id):
 
     return render(request, "auctions/listing_page.html", context=context)
 
-@login_required 
+@login_required(login_url = '/login') 
 def watch_list(request):
-    if not request.user.is_authenticated :
-        return render(request, "auctions/forOfor.html")
 
     if request.method == "POST":
         item_id = int(request.POST.get("to_remove"))
