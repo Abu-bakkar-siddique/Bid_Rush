@@ -271,7 +271,6 @@ def watch_list(request):
         
         updated_watchlist = [listing for listing in watchlist if listing["id"] != item_id]
         request.session["watchlist"] = updated_watchlist
-        
         return render(request, "auctions/watch_list.html")
     return render(request, "auctions/watch_list.html")
 
@@ -317,4 +316,3 @@ def category_page(request) :
             category_listings.append(auc)
     context["category_listings"] = category_listings
     return render(request, "auctions/category_page.html", context = context)
-    
