@@ -134,9 +134,11 @@ def create_listing(request):
 def listing_page(request, item_id):
     
     context = {}   
-    
-    obj = AuctionListing.objects.get(id=item_id)    
-
+    try :
+        obj = AuctionListing.objects.get(id=item_id)    
+    except AuctionListing.DoesNotExist :
+        return render(request, "auctions/forOfor.html")
+        
     highest_bid = Bid.objects.filter(item = obj).aggregate(Max("bid_price"))["bid_price__max"]
     if not highest_bid :
         highest_bid = obj.price

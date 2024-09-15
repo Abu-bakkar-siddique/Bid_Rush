@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "auctions/layout.html" %}
 
-{% block content %}
+{% block body %}
 <div class="container mt-5 text-center">
     <h1 class="display-4">Oops! Page Not Found</h1>
     <p class="lead">It looks like the page you are looking for doesn't exist.</p>
-    <a href="{% url 'index' %}" class="btn btn-primary">Back to Hsome</a>
+    <a href="{% url 'index' %}" class="btn btn-primary">Back to Home</a>
 </div>
 {% endblock %}
