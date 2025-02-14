@@ -15,7 +15,7 @@ class AuctionListing (models.Model):
     name = models.CharField(max_length=100)
     price = models.FloatField()
     date = models.DateTimeField(auto_now_add= True)
-    categery = models.ForeignKey(Category, on_delete= models.CASCADE, related_name = "category_listing")
+    category = models.ForeignKey(Category, on_delete= models.CASCADE, related_name = "category_listing")
     description = models.TextField(max_length = 1000)
     is_active = is_active = models.BooleanField(default=True)
     
